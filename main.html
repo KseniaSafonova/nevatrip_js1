@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Форма покупки билетов</h1>
+        <div>Выберите событие:</div>
+        <select name="" id="eventId">
+            <option>001</option>
+            <option>002</option>
+            <option>003</option>
+        </select>
+
+        <div>Выберите дату:</div>
+        <input type="date" id="eventDate">
+
+        <h2>Выберите количество билетов</h2>
+
+        <div>
+            <label for="adult">Взрослый</label>
+            <input type="text" name="" id="adult">
+        </div>
+        <div>
+            <label for="child">Детский</label>
+            <input type="text" name="" id="child">
+        </div>
+        <div>
+            <label for="exemption">Льготный</label>
+            <input type="text" name="" id="exemption">
+        </div>
+        <div>
+            <label for="group">Групповой (от 10 человек)</label>
+            <input type="text" name="" id="group">
+        </div>
+        <div>
+            <label for="type1">Билет тип 1</label>
+            <input type="text" name="" id="type1">
+        </div>
+        <div>
+            <label for="type2">Билет тип 2</label>
+            <input type="text" name="" id="type2">
+        </div>
+
+        <button onclick="buyTickets()">Купить!</button>
+
+
+    </main>
+</body>
+
+</html>
