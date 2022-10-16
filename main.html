@@ -18,30 +18,33 @@
 <body>
     <main>
         <h1>Форма покупки билетов</h1>
-        <div>Выберите событие:</div>
-        <select name="" id="eventId">
-            <option value="...">Выберите мероприятие</option>
-            <option value="001">Мероприятие 1</option>
-            <option value="002">Мероприятие 2</option>
-            <option value="003">Мероприятие 3</option>
-        </select>
+        <div>
+            <select name="" id="eventId">
+                <option value="...">Выберите мероприятие</option>
+                <option value="001">Мероприятие 1</option>
+                <option value="002">Мероприятие 2</option>
+                <option value="003">Мероприятие 3</option>
+            </select>
+        </div>
+        <div>
+            <select name="" id="eventTime001" class="select">
+                <option>Выберите дату и время:</option>
+                <option>2022-10-20 18:00</option>
+                <option>2022-10-21 18:00</option>
+            </select>
+            <select name="" id="eventTime002" class="select">
+                <option>Выберите дату и время:</option>
+                <option>2022-10-20 13:00</option>
+                <option>2022-10-20 18:00</option>
+            </select>
+            <select name="" id="eventTime003" class="select">
+                <option>Выберите дату и время:</option>
+                <option>2022-10-22 11:00</option>
+                <option>2022-10-22 13:00</option>
+                <option>2022-10-22 18:00</option>
+            </select>
+        </div>
 
-        <select name="" id="eventTime001">
-            <option>Выберите дату и время:</option>
-            <option>2022-10-20 18:00</option>
-            <option>2022-10-21 18:00</option>
-        </select>
-        <select name="" id="eventTime002">
-            <option>Выберите дату и время:</option>
-            <option>2022-10-20 13:00</option>
-            <option>2022-10-20 18:00</option>
-        </select>
-        <select name="" id="eventTime003">
-            <option>Выберите дату и время:</option>
-            <option>2022-10-22 11:00</option>
-            <option>2022-10-22 13:00</option>
-            <option>2022-10-22 18:00</option>
-        </select>
 
         <h2>Выберите количество билетов</h2>
 
@@ -53,7 +56,8 @@
             <label for="child">Детский</label>
             <input type="text" name="" id="child">
         </div>
-        <div>
+        <div id="exemptionTicket">
+            <!--Билет доступен при выборе Мероприятия 2-->
             <label for="exemption">Льготный</label>
             <input type="text" name="" id="exemption">
         </div>
@@ -61,17 +65,17 @@
             <label for="group">Групповой (от 10 человек)</label>
             <input type="text" name="" id="group">
         </div>
-        <div>
+        <!--Билетs доступен при выборе Мероприятия 3-->
+        <div id="type1Ticket">
             <label for="type1">Билет тип 1</label>
             <input type="text" name="" id="type1">
         </div>
-        <div>
+        <div id="type2Ticket">
             <label for="type2">Билет тип 2</label>
             <input type="text" name="" id="type2">
         </div>
 
-        <button onclick="buyTickets()">Купить!</button>
-
+        <button onclick="buyTickets()" id="buyTickets">Купить!</button>
 
         <section>
             <table class="table">
@@ -88,8 +92,12 @@
                         <th>ticket_exemption_quantity</th>
                         <th>ticket_group_price</th>
                         <th>ticket_group_quantity</th>
+                        <th>ticket_type1_price</th>
+                        <th>ticket_type1_quantity</th>
+                        <th>ticket_type2_price</th>
+                        <th>ticket_type2_quantity</th>
                         <th>barcode</th>
-
+                        <th>user_id</th>
                         <th>equal_price</th>
                         <th>created</th>
                     </tr>

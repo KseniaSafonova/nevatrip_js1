@@ -1,5 +1,16 @@
 #eventTime001,
 #eventTime002,
-#eventTime003 {
+#eventTime003,
+#exemptionTicket,
+#type1Ticket,
+#type2Ticket {
     display: none;
+}
+
+main div {
+    margin-top: 20px;
+}
+
+#buyTickets {
+    margin-top: 20px;
 }
