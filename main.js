@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             <td>${order.ticket_type2_price}</td>
             <td>${order.ticket_type2_quantity}</td>
             <td>${order.barcode}</td>
+            <td>${order.barcodes}</td>
             <td>${order.user_id}</td>
             <td>${order.equal_price}</td>
             <td>${order.created}</td>
@@ -114,8 +115,10 @@ function setStorageOrders() {
 }
 
 function buyTickets() {
+    let id = (Math.random() * (1000 - 0) + 0).toFixed(0);
     let adultPrice;
     let kidPrice;
+    let exemptionPrice;
     let event_id = document.getElementById('eventId').value;
     let event_date = eventTime.value;
     let ticket_adult_quantity = document.getElementById('adult').value;
@@ -124,6 +127,7 @@ function buyTickets() {
     let ticket_group_quantity = document.getElementById('group').value;
     let ticket_type1_quantity = document.getElementById('type1').value;
     let ticket_type2_quantity = document.getElementById('type2').value;
+    let ticketCount = +ticket_adult_quantity + +ticket_kid_quantity + +ticket_exemption_quantity + +ticket_group_quantity + +ticket_type1_quantity + +ticket_type2_quantity;
 
     for (let event of events) {
         if (event_id == Object.values(event)[0]) {
@@ -136,8 +140,13 @@ function buyTickets() {
         }
     }
 
+    let barcodes = []
+    for (i = 0; i < ticketCount; i++) {
+        barcodes.push(Math.trunc(Math.random() * (9999 - 1000 + 1)) + 1000);
+    }
+
     let order = {
-        id: (Math.random() * (1000 - 0) + 0).toFixed(0),
+        id: id,
         event_id: event_id,
         event_date: event_date,
         ticket_adult_price: adultPrice,
@@ -153,6 +162,7 @@ function buyTickets() {
         ticket_type2_price: type2Price,
         ticket_type2_quantity: +0 + +ticket_type2_quantity,
         barcode: (Math.random() * (1000000 - 0) + 0).toFixed(0),
+        barcodes: barcodes.map((el) => id + el),
         user_id: users[0].user_id,
         equal_price:
             (ticket_adult_quantity * adultPrice) +
@@ -163,8 +173,9 @@ function buyTickets() {
             (ticket_type2_quantity * type2Price),
         created: new Date().toString()
     }
-    console.log(order)
+
     Orders.push(order);
+    setStorageOrders();
     document.querySelector('.table').innerHTML +=
         `<tr>
             <td>${order.id}</td>
@@ -183,10 +194,10 @@ function buyTickets() {
             <td>${order.ticket_type2_price}</td>
             <td>${order.ticket_type2_quantity}</td>
             <td>${order.barcode}</td>
+            <td>${order.barcodes}</td>
             <td>${order.user_id}</td>
             <td>${order.equal_price}</td>
             <td>${order.created}</td>
         </tr>`
-    setStorageOrders();
 }
 
