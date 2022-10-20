@@ -37,7 +37,6 @@ let users = [
 
 let Orders = [];
 
-
 document.addEventListener("DOMContentLoaded", function (event) {
 
     let restoredOrders = JSON.parse(localStorage.getItem("Orders"));
@@ -106,10 +105,6 @@ eventId.addEventListener('change', function () {
 
 });
 
-function closeList() {
-    eventTime.style.display = 'none';
-}
-
 function setStorageOrders() {
     localStorage.setItem("Orders", JSON.stringify(Orders));
 }
@@ -140,7 +135,7 @@ function buyTickets() {
         }
     }
 
-    let barcodes = []
+    let barcodes = [] //массив собственных баркодов для билетов 
     for (i = 0; i < ticketCount; i++) {
         barcodes.push(Math.trunc(Math.random() * (9999 - 1000 + 1)) + 1000);
     }
@@ -161,8 +156,8 @@ function buyTickets() {
         ticket_type1_quantity: +0 + +ticket_type1_quantity,
         ticket_type2_price: type2Price,
         ticket_type2_quantity: +0 + +ticket_type2_quantity,
-        barcode: (Math.random() * (1000000 - 0) + 0).toFixed(0),
-        barcodes: barcodes.map((el) => id + el),
+        barcode: (Math.random() * (1000000 - 0) + 0).toFixed(0), //баркод заказа
+        barcodes: barcodes.map((el) => id + el),  //отдельный баркод для каждого билета - складывается из id заказа и рандомного числа
         user_id: users[0].user_id,
         equal_price:
             (ticket_adult_quantity * adultPrice) +
